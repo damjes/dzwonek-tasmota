@@ -28,6 +28,9 @@ polecenie(wlasc, 'TimeSTD', '0,4,10,1,3,60'). % ustaw też czas zimowy
 polecenie(wlasc, 'TimeZone', 99). % używaj DST i STD (Timezone od -13 do 13 ustawiaja standardowy czas dla danego GMT/UTC)
 
 % Wi-Fi
+
+% TODO obsłużyć Backlog
+
 polecenie(setup, 'Ssid1', SSID) :-
 	ssid_wifi1(SSID). % ustaw nazwę pierwszej sieci
 polecenie(setup, 'Password1', Haslo) :-
@@ -40,6 +43,9 @@ polecenie(setup, 'WebPassword', Haslo) :-
 	haslo_web(Haslo). % ustaw hasło dla panelu WWW
 
 % MQTT
+
+% TODO obsłużyć Backlog
+
 polecenie(setup, 'MqttHost', Host) :-
 	host_mqtt(Host). % ustaw host MQTT
 polecenie(setup, 'MqttUser', Uzytkownik) :-
