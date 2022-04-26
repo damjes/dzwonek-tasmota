@@ -17,16 +17,17 @@ lekcja(2, 0, MinutyDoby) :-
 	przelicz(MinutyDoby, 7, 25).
 dlugosc_lekcji(2, 30).
 
-standardowa_przerwa(1, 5).
+standardowa_przerwa(1, 10).
 standardowa_przerwa(2, 5).
 
 max_lekcja(13).
 
-niestandardowa_przerwa(1, 3, 10).
-niestandardowa_przerwa(1, 4, 10).
-niestandardowa_przerwa(1, 5, 20).
-niestandardowa_przerwa(1, 6, 10).
-niestandardowa_przerwa(1, 7, 10).
+niestandardowa_przerwa(1, 0, 5).
+niestandardowa_przerwa(1, 5, 15).
+niestandardowa_przerwa(1, 10, 5).
+niestandardowa_przerwa(1, 11, 5).
+niestandardowa_przerwa(1, 12, 5).
+niestandardowa_przerwa(1, 13, 5).
 
 niestandardowa_przerwa(2, 4, 10).
 niestandardowa_przerwa(2, 5, 10).
@@ -49,3 +50,17 @@ lekcja(Tablica, NumerLekcji, KoniecPrzerwy) :-
 	przerwa(Tablica, PoprzedniaLekcja, PoczatekPrzerwy),
 	dlugosc_przerwy(Tablica, PoprzedniaLekcja, DlugoscPrzerwy),
 	KoniecPrzerwy #= PoczatekPrzerwy + DlugoscPrzerwy.
+
+dzwonienie(Tablica, Kiedy) :-
+	przerwa(Tablica, _, Kiedy).
+dzwonienie(Tablica, Kiedy) :-
+	lekcja(Tablica, _, Kiedy).
+
+pisz_tablice(Tablica) :-
+	lekcja(Tablica, NumerLekcji, Lekcja),
+	przerwa(Tablica, NumerLekcji, Przerwa),
+	przelicz(Lekcja, LekcjaGodziny, LekcjaMinuty),
+	przelicz(Przerwa, PrzerwaGodziny, PrzerwaMinuty),
+	writef('%3L. %3R:%3R-%3R:%3R\n', [NumerLekcji, LekcjaGodziny, LekcjaMinuty, PrzerwaGodziny, PrzerwaMinuty]),
+	fail.
+pisz_tablice(_).
