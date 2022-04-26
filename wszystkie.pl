@@ -1,5 +1,6 @@
 :- [
 	backlog,
+	konfiguracja,
 	poziomy,
 	sekrety,
 	tablice_dzwonien,

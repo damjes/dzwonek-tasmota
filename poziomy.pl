@@ -4,6 +4,7 @@ poziom(setup, 10).
 poziom(pre, 20).
 poziom(wlasc, 30).
 poziom(post, 40).
+poziom(reset, 99).
 
 generuj_poziom(Liczba-Lista) :-
 	poziom(Poziom, Liczba),
