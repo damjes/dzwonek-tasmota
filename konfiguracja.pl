@@ -29,29 +29,29 @@ polecenie(wlasc, 'TimeZone', 99). % używaj DST i STD (Timezone od -13 do 13 ust
 
 % Wi-Fi
 
-% TODO obsłużyć Backlog
-
-polecenie(setup, 'Ssid1', SSID) :-
-	ssid_wifi1(SSID). % ustaw nazwę pierwszej sieci
-polecenie(setup, 'Password1', Haslo) :-
-	haslo_wifi1(Haslo). % ustaw hasło pierwszej sieci
-polecenie(setup, 'Ssid2', SSID) :-
-	ssid_wifi2(SSID). % ustaw nazwę drugiej sieci
-polecenie(setup, 'Password2', Haslo) :-
-	haslo_wifi2(Haslo). % ustaw hasło drugiej sieci
-polecenie(setup, 'WebPassword', Haslo) :-
-	haslo_web(Haslo). % ustaw hasło dla panelu WWW
+backlog(setup, [
+	polecenie('Ssid1', SSID1),
+	polecenie('Password1', Haslo1),
+	polecenie('Ssid2', SSID2),
+	polecenie('Password2', Haslo2),
+	polecenie('WebPassword', HasloWeb)
+]) :-
+	ssid_wifi1(SSID1),
+	haslo_wifi1(Haslo1),
+	ssid_wifi2(SSID2),
+	haslo_wifi2(Haslo2),
+	haslo_web(HasloWeb).
 
 % MQTT
 
-% TODO obsłużyć Backlog
-
-polecenie(setup, 'MqttHost', Host) :-
-	host_mqtt(Host). % ustaw host MQTT
-polecenie(setup, 'MqttUser', Uzytkownik) :-
-	user_mqtt(Uzytkownik). % ustaw użytkownika MQTT
-polecenie(setup, 'MqttPassword', Haslo) :-
-	haslo_mqtt(Haslo). % ustaw hasło MQTT
+backlog(setup, [
+	polecenie('MqttHost', Host),
+	polecenie('MqttUser', Uzytkownik),
+	polecenie('MqttPassword', Haslo)
+]) :-
+	host_mqtt(Host),
+	user_mqtt(Uzytkownik),
+	haslo_mqtt(Haslo).
 % TODO: dorobić jeszcze konfigurację na podstawie panelu WWW
 
 % Timers
